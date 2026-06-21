@@ -1,0 +1,20 @@
+description: |
+	Match Agent: given a candidate profile and a job description, compute a
+	match score and provide a breakdown of skill/experience/education matches.
+
+examples:
+	- input: |
+			candidate: {email}
+			job_id: {job_id}
+		output: |
+			{
+				"candidate_email": "{email}",
+				"job_id": {job_id},
+				"score": 87.5,
+				"details": { ... }
+			}
+match_prompt: |
+	You are a hiring assistant. Given the following candidate profile and job description, produce a JSON object matching the schema:
+	Candidate: {candidate_json}
+	Job: {job_json}
+	Return only valid JSON that matches the keys: candidate_email, job_id, score, details (with skill_match, experience_match, education_match, missing_skills).
